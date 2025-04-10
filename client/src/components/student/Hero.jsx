@@ -1,5 +1,6 @@
 import React from 'react'
 import sktech from '../../assets/sktech.svg';
+import SearchBar from './SearchBar';
 
 const Hero = () => {
   return (
@@ -17,6 +18,8 @@ const Hero = () => {
 
         <p className='md:hidden block text-gray-500 max-w-sm mx-auto'>We bring together 
           world-class instructors to help you achieve your personal and professional goals.</p>
+
+        <SearchBar />
     </div>
   )
 }
