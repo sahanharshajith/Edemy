@@ -1,17 +1,15 @@
 // filepath: e:\Git\LMS website\Edemy\client\src\context\AppContext.jsx
 import React, { createContext, useEffect, useState } from 'react'; 
-import { dummyCourses } from '../assets/assets.js'; // Use named import
+import { dummyCourses } from '../assets/assets.js';
 import { useNavigate } from 'react-router-dom';
 
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-
   const currency = import.meta.env.VITE_CURRENCY;
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const [state, setState] = useState(null);
-
   const [allCourses, setAllCourses] = useState([]);
   const [isEducator, setIsEducator] = useState(true);
 
@@ -19,7 +17,7 @@ export const AppContextProvider = ({ children }) => {
     setAllCourses(dummyCourses);
   };
 
-  const calculateRating = (course)=> {
+  const calculateRating = (course) => {
     if (!course.courseRatings || course.courseRatings.length === 0) return 0;
     let totalRating = 0;
     course.courseRatings.forEach((rating) => {
@@ -30,11 +28,19 @@ export const AppContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchAllCourses()
-  },[]);  
+  }, []);  
 
   return (
-    <AppContext.Provider value={{ state, setState, currency, allCourses, navigate, calculateRating, 
-    isEducator, setIsEducator }}>
+    <AppContext.Provider value={{ 
+      state, 
+      setState, 
+      currency, 
+      allCourses, 
+      navigate,
+      calculateRating, 
+      isEducator, 
+      setIsEducator 
+    }}>
       {children}
     </AppContext.Provider>
   );
